@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Panel Admina
+{% endblock %}
+
+{% block content %}
+<h1>Panel administratora</h1>
+<a href="{{ url_for('admin_bp.new_title') }}" class="btn btn-primary">Dodaj nowy utwór</a>
+<a href="{{ url_for('admin_bp.add_user') }}" class="btn btn-primary">Dodaj użytkownika</a>
+{% endblock %}

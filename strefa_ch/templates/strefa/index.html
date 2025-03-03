@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Strefa Chórzystów
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Strefa Chórzystów</h1>
+
+    <!-- Sekcja z aktualnościami -->
+    <div class="card my-4 shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h2 class="h5 mb-0">Aktualności</h2>
+        </div>
+        <div class="card-body">
+            <p class="mb-0">
+                Kochani strona cały czas jest w trakcie tworzenia ale już możecie z niej korzystać. Będę wdzięczny za zgłaszanie mi błędów na tej stronie jeśli jakieś zauważycie, gdyż zwłaszcza na początku mogą się pojawiać.
+            </p>
+            <p class="mb-0">
+                Najbliższa próba 26 lutego o godzinie 18:00 w Arkadii.
+            </p>
+        </div>
+    </div>
+
+    <!-- Lista wyboru głosów -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-white">
+            <h2 class="h5 mb-0">Wybierz głos</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{{ url_for('strefa_bp.voice_list', voice_name='Sopran') }}" class="voice-link">
+                        Sopran
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ url_for('strefa_bp.voice_list', voice_name='Alt') }}" class="voice-link">
+                        Alt
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ url_for('strefa_bp.voice_list', voice_name='Tenor') }}" class="voice-link">
+                        Tenor
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Stylizacja efektów najechania i kliknięcia -->
+<style>
+    .voice-link {
+        color: #212529; /* Domyślny kolor */
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .voice-link:hover {
+        color: #ffc107; /* Niebieski kolor przy najechaniu */
+    }
+
+    .voice-link:active {
+        color: #ffc107; /* Ciemniejszy niebieski przy kliknięciu */
+    }
+</style>
+
+{% endblock %}

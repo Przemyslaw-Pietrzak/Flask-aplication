@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ voice_name }}
+{% endblock %}
+
+{% block content %}
+<h1>Głos: {{ voice_name }}</h1>
+{% if voices %}
+  <ul class="list-group">
+    {% for v in voices %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ v.title.name }} ({{ v.title.version }}) ({{ v.title.year }}) 
+        <a href="{{ url_for('strefa_bp.audio_files', voice_name=voice_name, title_id=v.title_id) }}" 
+           class="btn btn-warning btn-sm">
+           Zobacz pliki audio
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Trwają prace techniczne nad głosem: {{ voice_name }}</p>
+{% endif %}
+{% endblock %}

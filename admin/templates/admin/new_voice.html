@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    New Voice
+{% endblock %}
+
+{% block content %}
+<h2>Dodaj głos dla utworu:  {{ title.name }}</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.voice_name.label(class="form-label") }}
+    {{ form.voice_name(class="form-control") }}
+  </div>
+  <button type="submit" class="btn btn-success">Dodaj głos</button>
+</form>
+{% endblock %}

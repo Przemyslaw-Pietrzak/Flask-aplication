@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{voice_name}}  {{name}}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ voice.title.name }} {{voice.title.version}} ({{ voice.title.year }})</h2>
+<h3>Głos: {{ voice.voice_name }}</h3>
+
+<div class="button-container">
+  <a href="{{ url_for('strefa_bp.voice_list', voice_name=voice_name) }}" class="btn btn-secondary">Powrót do wyboru utworów</a>
+  <button id="loopButton">🔁 Włącz zapętlanie</button>
+</div>
+
+{% if files %}
+  <ul class="list-group">
+    {% for f in files %}
+      {{f.file_path}}
+      <li class="list-group-item">
+        <audio controls>
+          <source src="{{ url_for('static', filename='audio/' + f.file_path) }}" type="audio/mpeg">
+          Twoja przeglądarka nie obsługuje elementu audio.
+        </audio>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Brak plików audio.</p>
+{% endif %}
+
+<style>
+.list-group-item {
+  border: none;
+  background: transparent;
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+  padding: 0 2vw; /* Odstęp od krawędzi ekranu */
+  margin-bottom: 2vh;
+}
+
+h3 {
+  margin-bottom: 2.5vh;
+}
+
+#loopButton {
+  margin-left: 1vh;
+}
+
+@media (max-width: 768px) { /* Dla urządzeń mobilnych */
+  audio {
+    width: 100%;
+    height: 60px; /* Możesz dostosować wysokość */
+  }
+
+  h2,h3 {
+    text-align: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 0 2vw; /* Odstęp od krawędzi ekranu */
+    margin-bottom: 2vh;
+  }
+}
+
+
+</style>
+
+<!--Skrypt do tworzenia przycisku pętli-->
+<script src="{{ url_for('static', filename='js/loop.js') }}"></script>
+{% endblock %}

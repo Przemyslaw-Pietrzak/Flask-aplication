@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    New title
+{% endblock %}
+
+{% block content %}
+<h2>Dodaj nowy utwór</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.version.label(class="form-label") }}
+    {{ form.version(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.year.label(class="form-label") }}
+    {{ form.year(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.voices_count.label(class="form-label") }}
+    {{ form.voices_count(class="form-control") }}
+  </div>
+  <button type="submit" class="btn btn-success">Zapisz</button>
+</form>
+{% endblock %}

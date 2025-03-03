@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Upload Audio
+{% endblock %}
+
+{% block content %}
+<h2>Wgraj pliki audio dla głosu: {{ voice.voice_name }}</h2>
+<form method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.audio_files.label(class="form-label") }}
+    {{ form.audio_files(class="form-control", multiple=True) }}
+  </div>
+  <button type="submit" class="btn btn-success">Wyślij</button>
+</form>
+{% endblock %}
